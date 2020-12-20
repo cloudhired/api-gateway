@@ -1,8 +1,5 @@
 steps:
 - name: 'ubuntu'
   args: ['ls', '-a']
-- name: gcr.io/google.com/cloudsdktool/cloud-sdk
-  args:
-    - endpoints
-    - services
-    - list
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['endpoints', 'services', 'list']
