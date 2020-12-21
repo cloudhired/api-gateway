@@ -43,9 +43,9 @@ while getopts :c:s:p:v:i: arg; do
   esac
 done
 
-SERVICE="$(gcloud endpoints configs list --service api.cloudhired.com | sed '2q;d' | sed 's/ .*//')"
+CONFIG_ID="$(gcloud endpoints configs list --service api.cloudhired.com | sed '2q;d' | sed 's/ .*//')"
 echo "================service congif name==================="
-echo "${SERVICE}"
+echo "${CONFIG_ID}"
 
 [[ -n "${PROJECT}" ]] || error_exit "Missing required PROJECT"
 [[ -n "${SERVICE}" ]] || error_exit "Missing required SERVICE"
