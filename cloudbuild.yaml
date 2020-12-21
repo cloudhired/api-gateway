@@ -9,5 +9,5 @@ steps:
   entrypoint: 'bash'
   args: ['./gcloud_build_image.sh', '-s', 'api.cloudhired.com', '-c', '2020-12-20r0', '-p', 'cloudhired']
 - name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
+  entrypoint: '/bin/bash'
   args: ['cat', '/workspace/new_image.txt']
