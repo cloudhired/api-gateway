@@ -1,0 +1,83 @@
+swagger: '2.0'
+info:
+  title: Cloud Endpoints + Cloud Run
+  description: Sample API on Cloud Endpoints with a Cloud Run backend
+  version: 1.0.0
+host: api.cloudhired.com
+security:
+  - api_key: []
+schemes:
+  - https
+produces:
+  - application/json
+x-google-backend:
+  address: https://cloudhired-backend-f4ql6f3osq-uc.a.run.app
+  protocol: h2
+paths:
+  /api/users:
+    get:
+      summary: Get all ther users.
+      operationId: allUsers
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+  /api/username/{username}:
+    options:
+      summary: Option method to return information.
+      operationId: usernameOptionMethod
+      parameters:
+        - in: path
+          name: username
+          required: true
+          type: string
+          minimum: 1
+          description: The username.
+      responses:
+        '200':
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+    get:
+      summary: Get one user profile.
+      operationId: username
+      parameters:
+        - in: path
+          name: username
+          required: true
+          type: string
+          minimum: 1
+          description: The username.
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+    post:
+      summary: Update user profile.
+      operationId: updateProfile
+      parameters:
+        - in: path
+          name: username
+          required: true
+          type: string
+          minimum: 1
+          description: The username.
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+securityDefinitions:
+  # This section configures basic authentication with an API key.
+  api_key:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
