@@ -77,10 +77,8 @@ fi
 echo "Building image for ESP version: ${ESP_FULL_VERSION}"
 
 cd "$(mktemp -d /tmp/docker.XXXX)"
-
+echo "https://servicemanagement.googleapis.com/v1/services/${SERVICE}/configs/${CONFIG_ID}?view=FULL"
 # Be careful about exposing the access token.
-echo ${SERVICE}
-echo ${CONFIG_ID}
 curl --fail -o "service.json" -H "Authorization: Bearer $(gcloud auth print-access-token)" \
   "https://servicemanagement.googleapis.com/v1/services/${SERVICE}/configs/${CONFIG_ID}?view=FULL" \
   || error_exit "Failed to download service config"
