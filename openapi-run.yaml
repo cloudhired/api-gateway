@@ -4,8 +4,6 @@ info:
   description: Sample API on Cloud Endpoints with a Cloud Run backend
   version: 1.0.0
 host: api.cloudhired.com
-security:
-  - api_key: []
 schemes:
   - https
 produces:
@@ -18,6 +16,8 @@ paths:
     get:
       summary: Get all ther users.
       operationId: allUsers
+      security:
+      - api_key: []
       responses:
         '200':
           description: OK
