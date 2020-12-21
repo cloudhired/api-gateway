@@ -101,7 +101,8 @@ NEW_IMAGE="gcr.io/${PROJECT}/endpoints-runtime-serverless:${ESP_FULL_VERSION}-${
 gcloud builds submit --tag "${NEW_IMAGE}" . --project="${PROJECT}"
 )
 
-export NEW_IMAGE=${NEW_IMAGE}
+echo "==================="
+echo ${_NEW_IMAGE}
 
 # Delete the temporary directory we created earlier.
 # Move back to the previous directory with an echo.
