@@ -3,10 +3,16 @@ steps:
   args: ['ls', '-a']
 - name: 'ubuntu'
   args: ['ls', '/workspace']
+
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['endpoints', 'services', 'list']
+  args: ['endpoints', 'services', 'deploy', 'openapi-run.yaml', '--project', 'cloudhired']
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['endpoints', 'configs', 'list', '--service', 'api.cloudhired.com']
+
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
-  args: ['./gcloud_build_image.sh', '-s', 'api.cloudhired.com', '-c', '2020-12-20r0', '-p', 'cloudhired']
+  args: ['./gcloud_build_image.sh', '-s', 'api.cloudhired.com', '-c', '$(gcloud endpoints configs list --service api.cloudhired.com | sed '2q;d' | sed 's/ .*//')', '-p', 'cloudhired']
+
 - name: 'ubuntu'
   args: ['cat', 'new_image.txt']
