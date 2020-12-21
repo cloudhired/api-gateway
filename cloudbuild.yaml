@@ -12,7 +12,7 @@ steps:
 
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
-  args: ['./gcloud_build_image.sh', '-s', 'api.cloudhired.com', '-c', '$(gcloud endpoints configs list --service api.cloudhired.com | sed '2q;d' | sed 's/ .*//')', '-p', 'cloudhired']
+  args: ['./gcloud_build_image.sh', '-s', 'api.cloudhired.com', '-c', "$(gcloud endpoints configs list --service api.cloudhired.com | sed '2q;d' | sed 's/ .*//')", '-p', 'cloudhired']
 
 - name: 'ubuntu'
   args: ['cat', 'new_image.txt']
