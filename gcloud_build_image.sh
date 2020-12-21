@@ -103,6 +103,7 @@ gcloud builds submit --tag "${NEW_IMAGE}" . --project="${PROJECT}"
 
 echo "=================== Save new image name to workplace==================="
 echo ${NEW_IMAGE} > /workspace/new_image.txt &&
+cat /workspace/new_image.txt
 
 # Delete the temporary directory we created earlier.
 # Move back to the previous directory with an echo.
