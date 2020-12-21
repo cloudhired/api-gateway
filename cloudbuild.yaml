@@ -1,6 +1,8 @@
 steps:
 - name: 'ubuntu'
   args: ['ls', '-a']
+- name: 'ubuntu'
+  args: ['ls', '/workspace']
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['endpoints', 'services', 'list']
 - name: 'gcr.io/cloud-builders/gcloud'
