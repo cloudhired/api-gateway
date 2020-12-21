@@ -77,7 +77,8 @@ fi
 echo "Building image for ESP version: ${ESP_FULL_VERSION}"
 
 cd "$(mktemp -d /tmp/docker.XXXX)"
-echo "https://servicemanagement.googleapis.com/v1/services/${SERVICE}/configs/${CONFIG_ID}?view=FULL"
+
+echo "Making request to https://servicemanagement.googleapis.com/v1/services/${SERVICE}/configs/${CONFIG_ID}?view=FULL"
 # Be careful about exposing the access token.
 curl --fail -o "service.json" -H "Authorization: Bearer $(gcloud auth print-access-token)" \
   "https://servicemanagement.googleapis.com/v1/services/${SERVICE}/configs/${CONFIG_ID}?view=FULL" \
@@ -99,6 +100,8 @@ EOF
 NEW_IMAGE="gcr.io/${PROJECT}/endpoints-runtime-serverless:${ESP_FULL_VERSION}-${SERVICE}-${CONFIG_ID}"
 gcloud builds submit --tag "${NEW_IMAGE}" . --project="${PROJECT}"
 )
+
+export NEW_IMAGE=${NEW_IMAGE}
 
 # Delete the temporary directory we created earlier.
 # Move back to the previous directory with an echo.
