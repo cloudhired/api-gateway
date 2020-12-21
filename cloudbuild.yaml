@@ -9,7 +9,8 @@ steps:
   entrypoint: 'bash'
   args: ['./gcloud_build_image.sh', '-s', 'api.cloudhired.com', '-c', '2020-12-20r0', '-p', 'cloudhired']
 - name: 'ubuntu'
-  args: ['echo', '${_NEW_IMAGE}']
-  
-substitutions:
-    _NEW_IMAGE: 'this is the default new image value set by morgan' # default value
+  args:
+    - -c
+    - |
+      # Read from "/workspace"
+      echo "New image we saved " $(cat /workspace/new_image.txt) &&
