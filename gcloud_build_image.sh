@@ -99,10 +99,10 @@ EOF
 
 NEW_IMAGE="gcr.io/${PROJECT}/endpoints-runtime-serverless:${ESP_FULL_VERSION}-${SERVICE}-${CONFIG_ID}"
 gcloud builds submit --tag "${NEW_IMAGE}" . --project="${PROJECT}"
-echo "${NEW_IMAGE}" > /workspace/new_image.txt &&
 )
 
 echo "=================== Save new image name to workplace==================="
+echo "gcr.io/${PROJECT}/endpoints-runtime-serverless:${ESP_FULL_VERSION}-${SERVICE}-${CONFIG_ID}" > /workspace/new_image.txt &&
 cat /workspace/new_image.txt
 
 # Delete the temporary directory we created earlier.
