@@ -34,8 +34,6 @@ paths:
           type: string
           minimum: 1
           description: The username.
-      security:
-      - api_key: []
       responses:
         '200':
           description: OK
@@ -61,6 +59,8 @@ paths:
           description: A successful response
           schema:
             type: string
+      security:
+      - api_key: []
     post:
       summary: Update user profile.
       operationId: updateProfile
