@@ -109,3 +109,5 @@ cat /workspace/new_image.txt
 # Move back to the previous directory with an echo.
 rm -r "${PWD}"
 cd ~-
+
+ls -al
