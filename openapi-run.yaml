@@ -16,8 +16,6 @@ paths:
     get:
       summary: Get all ther users.
       operationId: allUsers
-      security:
-      - api_key: []
       responses:
         '200':
           description: OK
@@ -71,6 +69,8 @@ paths:
           type: string
           minimum: 1
           description: The username.
+      security:
+      - api_key: []
       responses:
         '200':
           description: A successful response
