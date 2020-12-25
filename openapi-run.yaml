@@ -57,8 +57,6 @@ paths:
           description: A successful response
           schema:
             type: string
-      security:
-      - api_key: []
     post:
       summary: Update user profile.
       operationId: updateProfile
