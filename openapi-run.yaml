@@ -16,8 +16,6 @@ paths:
     get:
       summary: Get all ther users.
       operationId: allUsers
-      security:
-      - firebase: []
       responses:
         '200':
           description: OK
@@ -70,7 +68,7 @@ paths:
           minimum: 1
           description: The username.
       security:
-      - api_key: []
+      - firebase: []
       responses:
         '200':
           description: A successful response
