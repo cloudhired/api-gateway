@@ -12,10 +12,17 @@ x-google-backend:
   address: https://cloudhired-backend-f4ql6f3osq-uc.a.run.app
   protocol: h2
 paths:
-  /api/id:
+  /api/uidtousername/{jwt}:
     get:
-      summary: Get user id given firebase UID.
-      operationId: getId
+      summary: Get username given firebase UID which is encoded in JWT.
+      operationId: getUsername
+      parameters:
+        - in: path
+          name: jwt
+          required: true
+          type: string
+          minimum: 1
+          description: JWT that includes UID.
       responses:
         '200':
           description: OK
