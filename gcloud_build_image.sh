@@ -96,6 +96,7 @@ FROM ${BASE_IMAGE}
 USER root
 ENV ENDPOINTS_SERVICE_PATH /etc/endpoints/service.json
 COPY service.json \${ENDPOINTS_SERVICE_PATH}
+ENV ESPv2_ARGS ^++^--cors_preset=basic++--cors_allow_headers="DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,x-auth-token"
 RUN chown -R envoy:envoy \${ENDPOINTS_SERVICE_PATH} && chmod -R 755 \${ENDPOINTS_SERVICE_PATH}
 USER envoy
 ENTRYPOINT ["/env_start_proxy.py"]
