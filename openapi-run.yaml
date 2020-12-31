@@ -12,6 +12,17 @@ x-google-backend:
   address: https://cloudhired-backend-f4ql6f3osq-uc.a.run.app
   protocol: h2
 paths:
+  /testing:
+    get:
+      summary: Temperary use for testing.
+      operationId: testing
+      security:
+      - firebase: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
   /api/uidtousername/{jwt}:
     get:
       summary: Get username given firebase UID which is encoded in JWT.
