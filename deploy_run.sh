@@ -7,3 +7,4 @@ gcloud run deploy gateway \
   --region=us-central1 \
   --platform=managed \
   --project=cloudhired
+  
