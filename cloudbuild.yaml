@@ -9,10 +9,6 @@ steps:
   entrypoint: 'bash'
   args: ['./gcloud_build_image.sh', '-s', 'api.cloudhired.com', '-c', 'does not matter', '-p', 'cloudhired']
 
-# - name: 'gcr.io/cloud-builders/gcloud'
-#   entrypoint: 'bash'
-#   args: ['./deploy_run.sh']
-
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
-  args: ['echo $(cat /workspace/new_image.txt)']
+  args: ['./deploy_run.sh']
