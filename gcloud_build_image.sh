@@ -22,6 +22,7 @@ set -eo pipefail
 # Default to the latest released ESPv2 version.
 BASE_IMAGE_NAME="gcr.io/endpoints-release/endpoints-runtime-serverless"
 ESP_TAG="2"
+ALLOWED_HEADERS="DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,x-auth-token"
 
 function error_exit() {
   # ${BASH_SOURCE[1]} is the file name of the caller.
@@ -96,7 +97,7 @@ FROM ${BASE_IMAGE}
 USER root
 ENV ENDPOINTS_SERVICE_PATH /etc/endpoints/service.json
 COPY service.json \${ENDPOINTS_SERVICE_PATH}
-ENV ESPv2_ARGS ^++^--cors_preset=basic++--cors_allow_headers="DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,x-auth-token"
+ENV ESPv2_ARGS ^++^--cors_preset=basic++--cors_allow_headers="${ALLOWED_HEADERS}"
 RUN chown -R envoy:envoy \${ENDPOINTS_SERVICE_PATH} && chmod -R 755 \${ENDPOINTS_SERVICE_PATH}
 USER envoy
 ENTRYPOINT ["/env_start_proxy.py"]
