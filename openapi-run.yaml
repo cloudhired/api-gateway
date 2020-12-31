@@ -29,7 +29,7 @@ paths:
       operationId: getUsername
       parameters:
         - in: header
-          name: Authorization
+          name: x-auth-token
           description: Authorization with JWT bearer token
           type: string
           required: true
