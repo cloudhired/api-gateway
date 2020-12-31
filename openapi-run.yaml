@@ -23,17 +23,16 @@ paths:
           description: OK
           schema:
             type: string
-  /api/uidtousername/{jwt}:
+  /api/uidtousername:
     get:
       summary: Get username given firebase UID which is encoded in JWT.
       operationId: getUsername
       parameters:
-        - in: path
-          name: jwt
-          required: true
+        - in: header
+          name: Authorization
+          description: Authorization with JWT bearer token
           type: string
-          minimum: 1
-          description: JWT that includes UID.
+          required: true
       responses:
         '200':
           description: OK
