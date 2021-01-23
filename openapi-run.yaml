@@ -14,7 +14,7 @@ x-google-backend:
 paths:
   /testing:
     get:
-      summary: Temperary use for testing.
+      summary: Temperary use for testing
       operationId: testing
       security:
       - firebase: []
