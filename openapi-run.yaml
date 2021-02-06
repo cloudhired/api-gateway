@@ -49,6 +49,15 @@ paths:
           description: OK
           schema:
             type: string
+  /api/allcerts:
+    get:
+      summary: Get all certifications that are registered.
+      operationId: allCerts
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
   /api/username/{username}:
     options:
       summary: Option method to return information.
